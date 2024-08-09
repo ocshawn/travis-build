@@ -15,13 +15,16 @@ module Travis
 
         private def check_urls
           @check_urls ||= Travis::Build.config.network.check_urls.map do |tmpl|
-            (tmpl % {
+            url = (tmpl % {
               app_host: app_host,
               job_id: data.job[:id],
               repo: data.slug
             }).output_safe
+            puts "Checking URL: #{url}"  # Add this line to print the URL
+            url
           end
         end
+        
 
         private def wait_retries
           @wait_retries ||= Integer(Travis::Build.config.network.wait_retries)
