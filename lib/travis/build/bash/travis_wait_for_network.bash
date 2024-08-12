@@ -7,7 +7,7 @@ travis_wait_for_network() {
   while [[ "${count}" -lt "${wait_retries}" ]]; do
     local confirmed=0
     for url in "${urls[@]}"; do
-      echo "Checking URL: ${url}"  # Changes
+      echo "Checking URL: ${url}"  # Changes changes
       if travis_download "${url}" /dev/null; then
         confirmed=$((confirmed + 1))
       fi
